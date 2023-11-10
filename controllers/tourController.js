@@ -45,7 +45,7 @@ exports.createTour = async (req, res) => {
     tours.push(newTour);
 
     await fs.promises.writeFile(
-        `${__dirname}/dev-data/data/tours-simple.json`, 
+        `${__dirname}/../dev-data/data/tours-simple.json`, 
         JSON.stringify(tours)
     );
 
@@ -67,7 +67,7 @@ exports.updateTour = (req, res) => {
     const updatedTours = tours.map(t => (t.id === id ? updatedTour : t));
 
     fs.writeFile(
-        `${__dirname}/dev-data/data/tours-simple.json`,
+        `${__dirname}/../dev-data/data/tours-simple.json`,
         JSON.stringify(updatedTours),
         err => {
             res.status(200).json({
@@ -88,7 +88,7 @@ exports.deleteTour = (req, res) => {
     tours.splice(targetIndex, 1);
 
     fs.writeFileSync(
-        `${__dirname}/dev-data/data/tours-simple.json`, 
+        `${__dirname}/../dev-data/data/tours-simple.json`, 
         JSON.stringify(tours)
     );
 
